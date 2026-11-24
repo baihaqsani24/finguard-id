@@ -1,0 +1,13 @@
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.DS_Store
+
+# Airflow / Docker runtime lokal
+pipeline/.env
+pipeline/logs/
+pipeline/plugins/
+pipeline/postgres_project_finguard/
+pipeline/dags/finguard_extract.csv
+pipeline/dags/finguard_transformed.csv
+pipeline/dags/finguard_scored.csv

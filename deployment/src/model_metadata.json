@@ -1,0 +1,193 @@
+{
+  "model_version": "finguard-r4-v1",
+  "model_1": {
+    "file": "model_kelayakan.pkl",
+    "algoritma": "LightGBM",
+    "params": {
+      "colsample_bytree": 0.8636359979282104,
+      "learning_rate": 0.024212617646248186,
+      "min_child_samples": 18,
+      "n_estimators": 451,
+      "num_leaves": 47,
+      "reg_lambda": 2.38855581786886,
+      "subsample": 0.8989280440549523,
+      "subsample_freq": 1
+    },
+    "data_latih": "X_train (semua debitur)",
+    "cv": {
+      "MAE": 8.366,
+      "RMSE": 12.237,
+      "R2": 0.958
+    },
+    "test": {
+      "MAE": 8.471,
+      "RMSE": 12.286,
+      "R2": 0.957
+    },
+    "status_test": {
+      "macro F1 status (5 kelas)": 0.7058,
+      "recall Macet (prediksi > 90)": 0.9449,
+      "akurasi ±1 kelas": 0.994,
+      "akurasi status kelayakan (3)": 0.9015
+    }
+  },
+  "model_2": {
+    "file": "model_restrukturisasi.pkl",
+    "algoritma": "LightGBM",
+    "params": {
+      "colsample_bytree": 0.8091930046665436,
+      "learning_rate": 0.028171515121115074,
+      "min_child_samples": 56,
+      "n_estimators": 704,
+      "num_leaves": 10,
+      "reg_lambda": 2.752717392942941,
+      "subsample": 0.8721230154351118,
+      "subsample_freq": 1
+    },
+    "data_latih": "X_train dengan DPD > 0",
+    "cv": {
+      "MAE": 10.596,
+      "RMSE": 13.956,
+      "R2": 0.941
+    },
+    "test": {
+      "MAE": 10.68,
+      "RMSE": 13.953,
+      "R2": 0.94
+    }
+  },
+  "thresholds": {
+    "lancar": 8.0,
+    "dpk": 30,
+    "kurang_lancar": 60,
+    "diragukan": 90
+  },
+  "input_columns": [
+    "age",
+    "monthly_income_idr",
+    "regional_minimum_wage_umr_idr",
+    "num_active_lending_apps",
+    "total_loan_outstanding_idr",
+    "credit_limit_granted_idr",
+    "loan_tenor_months",
+    "daily_interest_rate_pct",
+    "education_level",
+    "employment_status",
+    "primary_loan_purpose"
+  ],
+  "model_num_cols": [
+    "age",
+    "monthly_income_idr",
+    "regional_minimum_wage_umr_idr",
+    "num_active_lending_apps",
+    "total_loan_outstanding_idr",
+    "credit_limit_granted_idr",
+    "loan_tenor_months",
+    "daily_interest_rate_pct",
+    "debt_service_ratio",
+    "flag_rate_above_ojk_cap",
+    "flag_income_below_3jt",
+    "flag_apps_above_3",
+    "flag_dsr_above_30"
+  ],
+  "model_cat_cols": [
+    "education_level",
+    "employment_status",
+    "primary_loan_purpose"
+  ],
+  "input_range": {
+    "age": {
+      "min": 18.0,
+      "max": 35.0
+    },
+    "monthly_income_idr": {
+      "min": 1500000.0,
+      "max": 28000000.0
+    },
+    "regional_minimum_wage_umr_idr": {
+      "min": 2100000.0,
+      "max": 5350000.0
+    },
+    "num_active_lending_apps": {
+      "min": 1.0,
+      "max": 12.0
+    },
+    "total_loan_outstanding_idr": {
+      "min": 510000.0,
+      "max": 65000000.0
+    },
+    "credit_limit_granted_idr": {
+      "min": 1890000.0,
+      "max": 80000000.0
+    },
+    "loan_tenor_months": {
+      "min": 1.0,
+      "max": 24.0
+    },
+    "daily_interest_rate_pct": {
+      "min": 0.1,
+      "max": 0.4
+    }
+  },
+  "categories": {
+    "education_level": [
+      "Bachelor (S1)",
+      "Diploma (D3)",
+      "High School / SMK",
+      "Master (S2)"
+    ],
+    "employment_status": [
+      "Civil Servant / BUMN",
+      "Digital Freelancer / Creator",
+      "Entry-Level / Jobseeker",
+      "Formal Private Employee",
+      "Gig Worker / Ojol",
+      "Micro-Entrepreneur / UMKM"
+    ],
+    "primary_loan_purpose": [
+      "Daily Living & Emergency Buffer",
+      "Debt Refinancing / Gali Lubang",
+      "Gadget & Electronics Paylater",
+      "Lifestyle, Concert & FOMO Travel",
+      "Micro-Business Working Capital",
+      "Online Gambling / Speculative Trading"
+    ]
+  },
+  "feature_names_out": [
+    "num__age",
+    "num__monthly_income_idr",
+    "num__regional_minimum_wage_umr_idr",
+    "num__num_active_lending_apps",
+    "num__total_loan_outstanding_idr",
+    "num__credit_limit_granted_idr",
+    "num__loan_tenor_months",
+    "num__daily_interest_rate_pct",
+    "num__debt_service_ratio",
+    "num__flag_rate_above_ojk_cap",
+    "num__flag_income_below_3jt",
+    "num__flag_apps_above_3",
+    "num__flag_dsr_above_30",
+    "edu__education_level",
+    "cat__employment_status_Civil Servant / BUMN",
+    "cat__employment_status_Digital Freelancer / Creator",
+    "cat__employment_status_Entry-Level / Jobseeker",
+    "cat__employment_status_Formal Private Employee",
+    "cat__employment_status_Gig Worker / Ojol",
+    "cat__employment_status_Micro-Entrepreneur / UMKM",
+    "cat__primary_loan_purpose_Daily Living & Emergency Buffer",
+    "cat__primary_loan_purpose_Debt Refinancing / Gali Lubang",
+    "cat__primary_loan_purpose_Gadget & Electronics Paylater",
+    "cat__primary_loan_purpose_Lifestyle, Concert & FOMO Travel",
+    "cat__primary_loan_purpose_Micro-Business Working Capital",
+    "cat__primary_loan_purpose_Online Gambling / Speculative Trading"
+  ],
+  "versions": {
+    "python": "3.9.23",
+    "scikit-learn": "1.6.1",
+    "pandas": "2.3.3",
+    "numpy": "1.26.4",
+    "lightgbm": "4.6.0",
+    "shap": "0.49.1"
+  },
+  "random_state": 42
+}

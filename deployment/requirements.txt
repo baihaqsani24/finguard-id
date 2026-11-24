@@ -1,0 +1,12 @@
+# Versi library di-pin sama dengan environment training (h8_env / Python 3.9.23)
+# Lihat model/model_metadata.json -> versions
+streamlit==1.50.0
+scikit-learn==1.6.1
+pandas
+numpy
+scipy==1.13.1
+joblib==1.4.2
+lightgbm==4.6.0
+shap==0.49.1
+matplotlib==3.9.4
+seaborn==0.13.2
